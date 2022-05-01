@@ -1,0 +1,152 @@
+<form
+  nz-form
+  [nzLayout]="'vertical'"
+  [formGroup]="myForm"
+  style="margin-top: 20px"
+>
+  <ng-template #message>
+    <div>Vui lòng điền thông tin</div>
+  </ng-template>
+  <div class="row">
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Tên sản phẩm</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-input-group>
+            <input formControlName="name" nz-input placeholder="Tên sản phẩm" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label>Mô tả</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input formControlName="description" nz-input placeholder="Mô tả" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Đơn giá</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-input-group>
+            <nz-input-number
+              nzPlaceHolder="Đơn giá"
+              formControlName="price"
+              [nzMin]="1"
+              [nzStep]="1"
+            ></nz-input-number>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Số lượng</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-input-group>
+            <nz-input-number
+              nzPlaceHolder="Số lượng"
+              formControlName="amount"
+              [nzMin]="1"
+              [nzStep]="1"
+            ></nz-input-number>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Danh mục</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Chọn"
+            formControlName="categoryId"
+          >
+            <nz-option
+              *ngFor="let item of categories"
+              [nzLabel]="item.name"
+              [nzValue]="item.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Ngôn ngữ</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Chọn"
+            formControlName="languageId"
+          >
+            <nz-option
+              *ngFor="let item of languages"
+              [nzLabel]="item.name"
+              [nzValue]="item.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Nhà xuất bản</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Chọn"
+            formControlName="publisherId"
+          >
+            <nz-option
+              *ngFor="let item of publishers"
+              [nzLabel]="item.name"
+              [nzValue]="item.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label>Năm xuất bản</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <nz-input-number
+              nzPlaceHolder="Năm xuất bản"
+              formControlName="publishingYear"
+              [nzMin]="1"
+              [nzStep]="1"
+            ></nz-input-number>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+<div class="div-btn">
+  <button
+    (click)="cancel.emit()"
+    class="rounded"
+    nz-button
+    nzType="primary"
+    nzGhost
+    style="margin-right: 10px"
+  >
+    Hủy
+  </button>
+  <button
+    [disabled]="myForm.invalid"
+    (click)="save.emit()"
+    class="rounded"
+    nz-button
+    nzType="primary"
+  >
+    Lưu
+  </button>
+</div>

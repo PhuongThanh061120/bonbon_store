@@ -1,0 +1,54 @@
+.product-img {
+  img {
+    width: 100%;
+  }
+}
+
+::ng-deep {
+  .carousel-backdrop {
+    background-color: #ffff !important;
+    opacity: 1 !important;
+  }
+
+  .carousel-close {
+    background-color: beige !important;
+  }
+
+  .carousel-cell {
+    img {
+      object-fit: cover !important;
+      width: 80% !important;
+      height: 80% !important;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  ::ng-deep .carousel-cell {
+    img {
+      object-fit: contain !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+}
+
+.blue-btn {
+  width: 100%;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 0;
+}
+
+p {
+  line-height: 28px;
+}
+
+.item {
+  padding-bottom: 16px;
+
+  // border-bottom: 1px solid rgb(173 172 172 / 45%);
+  a {
+    color: black;
+  }
+}

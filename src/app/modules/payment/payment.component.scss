@@ -1,0 +1,46 @@
+.payment-image {
+  width: 28px;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.order-btn {
+  width: 100%;
+  border: 0 solid;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.payment-info {
+  padding: 12px;
+
+  img {
+    width: 40%;
+  }
+}
+
+.payment-input {
+  nz-card {
+    width: 100%;
+  }
+}
+
+.ant-radio-wrapper {
+  white-space: normal;
+}
+
+::ng-deep {
+
+  .ant-input-group>.ant-input:last-child,
+  .ant-input-group-addon:last-child {
+    border-radius: 25px;
+  }
+
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 25px;
+  }
+}
+
+.active {
+  display: inline;
+}

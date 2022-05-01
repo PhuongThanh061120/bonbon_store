@@ -1,0 +1,43 @@
+<div class="container top-space">
+  <div class="row g-5">
+    <div class="col-12 col-md-8 product-img">
+      <div class="row g-2">
+        <div class="col-12">
+          <img src="{{ firstImage.path }}" alt="" (click)="showGallery(1)">
+        </div>
+        <div class="col-6 col-md-6" *ngFor="let item of restImage, let i = index">
+          <img src="{{ item.path }}" alt="" (click)="showGallery(i)">
+        </div>
+        <!-- <div class="col-6 col-md-6">
+          <img src="/assets/images/ring3.jpg" alt="" (click)="showGallery(1)">
+        </div> -->
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <h3>{{ items.name }}</h3>
+      <p>Giá: {{ items.price }}</p>
+      <div class="d-flex">
+        <div class="circle-select" *ngFor="let item of items.children">
+          <img class="me-3 img-option" src="{{ item.image[0] }}" alt="">
+        </div>
+      </div>
+      <button class="blue-btn mt-4" (click)="showModal()"> Mua ngay</button>
+      <div class="mt-4">
+        <h3>Mô tả sản phẩm</h3>
+        <p>{{items.description}}</p>
+      </div>
+      <div class="mt-4">
+        <h3>Xem thêm sản phẩm khác</h3>
+        <nz-card>
+          <div class="item" *ngFor="let option of options">
+            <a routerLink="{{ option.link }}">
+              <div class="d-flex justify-content-between">
+                <span>{{ option.title }}</span><i class="py-1" nz-icon nzType="right" nzTheme="outline"></i>
+              </div>
+            </a>
+          </div>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+</div>

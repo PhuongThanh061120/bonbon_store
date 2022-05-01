@@ -1,0 +1,35 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="myForm" style="margin-top: 20px;">
+  <ng-template #message>
+    <div>Vui lòng điền thông tin</div>
+  </ng-template>
+  <div class="row">
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Mã sản phẩm</nz-form-label>
+        <nz-form-control [nzErrorTip]="message">
+          <nz-input-group>
+            <input formControlName="productId" nz-input placeholder="Mã sản phẩm" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="col-6">
+      <nz-form-item>
+        <nz-form-label nzRequired>Số lượng</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input formControlName="amount" nz-input placeholder="Số lượng" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+<div class="div-btn">
+  <button (click)="cancel.emit()" class="rounded" nz-button nzType="primary" nzGhost style="margin-right: 10px">
+    Hủy
+  </button>
+  <button [disabled]="myForm.invalid" (click)="save.emit()" class="rounded" nz-button nzType="primary">
+    Lưu
+  </button>
+</div>

@@ -1,0 +1,83 @@
+<div class="container top-space">
+  <div class="row g-5 justify-content-between">
+    <div class="col-12 col-lg-7 info">
+      <nz-card>
+        <div>
+          <h3>Thông tin giao hàng</h3>
+          <form nz-form [nzLayout]="'vertical'" [formGroup]="myForm">
+            <ng-template #message>
+              <div>Vui lòng điền thông tin</div>
+            </ng-template>
+            <div class="row">
+              <div class="col-12">
+                <nz-form-item>
+                  <nz-form-label nzRequired>Tên</nz-form-label>
+                  <nz-form-control [nzErrorTip]="message">
+                    <nz-input-group>
+                      <input
+                        formControlName="name"
+                        nz-input
+                        placeholder="Họ và tên"
+                      />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div class="col-12 col-md-7">
+                <nz-form-item>
+                  <nz-form-label>Email</nz-form-label>
+                  <nz-form-control>
+                    <nz-input-group>
+                      <input nz-input placeholder="Email" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div class="col-12 col-md-5">
+                <nz-form-item>
+                  <nz-form-label nzRequired>Số điện thoại</nz-form-label>
+                  <nz-form-control [nzErrorTip]="message">
+                    <nz-input-group>
+                      <input
+                        formControlName="phoneNumber"
+                        nz-input
+                        placeholder="Số điện thoại nhận hàng"
+                      />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div class="col-12">
+                <nz-form-item>
+                  <nz-form-label nzRequired>Địa chỉ</nz-form-label>
+                  <nz-form-control [nzErrorTip]="message">
+                    <nz-input-group>
+                      <input
+                        formControlName="address"
+                        nz-input
+                        placeholder="Địa chỉ nhận hàng"
+                      />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+          </form>
+        </div>
+        <button nz-button nzType="primary" class="order-btn mt-5" [disabled]="myForm.invalid" (click)="showModal()">Đặt hàng</button>
+      </nz-card>
+    </div>
+    <div class="col-12 col-lg-5">
+      <cart-product-list></cart-product-list>
+      <nz-alert class="mt-5" nzType="warning" [nzMessage]="notice"></nz-alert>
+      <ng-template #notice>
+        <p class="mb-0">
+          Bon Bon Store sẽ <strong>xác nhận</strong> đơn hàng bằng
+          <strong>tin nhắn SMS</strong> hoặc <strong>gọi điện</strong>. Bạn vui
+          lòng kiểm tra tin nhắn hoặc nghe ngay khi đặt hàng thành công và chờ
+          nhận hàng!
+        </p>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div>
+  <div class="mb-5">
+    <h3>Tìm kiếm theo</h3>
+    <form [formGroup]="myForm">
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+      <nz-form-item>
+        <nz-form-label>Tên sản phẩm / Năm xuất bản</nz-form-label>
+        <nz-form-control>
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input formControlName="keyword" nz-input placeholder="Nhập" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Danh mục</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Chọn"
+            formControlName="categoryId"
+          >
+            <nz-option
+              *ngFor="let item of categories"
+              [nzLabel]="item.name"
+              [nzValue]="item.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Ngôn ngữ</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Chọn"
+            formControlName="languageId"
+          >
+            <nz-option
+              *ngFor="let item of languages"
+              [nzLabel]="item.name"
+              [nzValue]="item.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Nhà xuất bản</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Chọn"
+            formControlName="publisherId"
+          >
+            <nz-option
+              *ngFor="let item of publishers"
+              [nzLabel]="item.name"
+              [nzValue]="item.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Khoảng giá</nz-form-label>
+        <nz-form-control>
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input formControlName="less" nz-input placeholder="Từ..." />
+            <input formControlName="greater" nz-input placeholder="Đến..." />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
