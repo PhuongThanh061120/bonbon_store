@@ -1,24 +1,14 @@
 <!-- product cart -->
-<div class="d-flex">
-  <div class="card">
-    <div class="container">
-      <div class="div-grid">
-        <div class="item" *ngFor="let item of products">
-          <a routerLink="/product-view">
-            <img
-              class="img-product"
-              src="{{ item.img }}"
-              alt=""
-            />
-            <p title="{{item.name}}" style="font-size: larger;font-weight: bold; white-space: nowrap;
+<div class="card">
+  <div class="item text-center">
+    <a routerLink="/product-view">
+      <img class="img-product" src="/assets/images/OnePiece/One1.jpg" alt="" />
+      <p title="{{data.name}}" style="font-size: larger;font-weight: bold; white-space: nowrap;
             width: 100%; padding: 0 5%; overflow: hidden;
-            text-overflow: ellipsis; ">{{ item.name }}</p>
-            <p>{{ item.price }}</p>
-          </a>
-          <button style="cursor: pointer;" (click)="showModal()">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-    </div>
+            text-overflow: ellipsis; ">{{ data.name }}</p>
+      <p>{{ data.price | number }}đ</p>
+    </a>
+    <button style="cursor: pointer;" (click)="createModal(data)">Thêm vào giỏ hàng</button>
   </div>
 </div>
 <!-- /product cart -->

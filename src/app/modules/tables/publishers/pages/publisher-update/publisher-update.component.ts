@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { PublisherService } from 'src/app/_shared/components/services/publisher.service';
 
 @Component({
   selector: 'app-publisher-update',
@@ -8,16 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./publisher-update.component.scss']
 })
 export class PublisherUpdateComponent implements OnInit {
-
-  @Input() myForm!: FormGroup
-  constructor(protected router: Router) {
+  myForm!: FormGroup;
+  id: any;
+  constructor(
+    private router: Router,
+    protected route: ActivatedRoute,
+    private fb: FormBuilder,
+    private publisherService: PublisherService,
+    private notification: NzNotificationService
+  ) {
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    this.myForm = this.fb.group({
+      name: ['', [Validators.required]],
+      country: [''],
+    });
+    this.publisherService.findOne(this.id).subscribe(val => {
+      this.myForm.patchValue(val);
+    })
   }
 
   onSave() {
-    this.gotoList();
+    this.publisherService.update(this.id, this.myForm.value).subscribe(() => {
+      this.notification.success(
+        'Thành công',
+        'Cập nhật Nhà xuất bản thành công'
+      );
+      this.gotoList();
+    })
   }
 
   onCancel() {

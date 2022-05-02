@@ -9,9 +9,8 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart-product-list.component.scss']
 })
 export class CartProductListComponent implements OnInit {
-  amount = new FormControl(1, [Validators.required])
-  demoValue = 1;
   listOfData = [];
+  totalPrice: number = 0;
   constructor(
     private nzMessageService: NzMessageService,
     private cartService: CartService
@@ -20,13 +19,10 @@ export class CartProductListComponent implements OnInit {
   ngOnInit() {
     this.getProduct();
   }
-  confirm(item): void {
-    // this.items = this.items.filter(x => x !== item);
-    // this.nzMessageService.info('Xóa thành công');
-  }
+
   getProduct() {
     this.listOfData = this.cartService.getProduct();
-    console.log(this.listOfData);
+    this.listOfData.forEach(x => this.totalPrice += x.price * x.number)
   }
   deleteProduct(data) {
     this.cartService.deleteProduct(data);

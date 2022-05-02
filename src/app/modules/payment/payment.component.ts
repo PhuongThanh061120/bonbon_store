@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { from } from 'rxjs';
 import { ConfirmComponent } from 'src/app/_shared/components/confirm/confirm.component';
-import { PaymentMethod } from '../payment/payment-method';
+import { CartService } from 'src/app/_shared/components/services/cart.service';
+import { OrderService } from 'src/app/_shared/components/services/order.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,11 +12,13 @@ import { PaymentMethod } from '../payment/payment-method';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent {
-  paymentMethod = PaymentMethod;
-  radioValue: any;
-  discountValue: any;
   myForm: FormGroup;
-  constructor(private fb: FormBuilder, private modal: NzModalService) {
+  constructor(
+    private fb: FormBuilder,
+    private modal: NzModalService,
+    private orderService: OrderService,
+    private cartService: CartService
+  ) {
     this.myForm = this.fb.group({
       name: ['', [Validators.required]],
       phoneNumber: [null, [Validators.required]],
@@ -37,7 +40,13 @@ export class PaymentComponent {
     });
   }
 
-  showModal(): void {
-    this.createModal();
+  order(): void {
+    const products = this.cartService.getProduct();
+    const body = { ...this.myForm.value, products };
+    // clear sản phẩm trong localstorage sau khi order thành công 
+    this.orderService.order(body).subscribe(res => {
+      this.cartService.clearProduct();
+      this.createModal();
+    })
   }
 }

@@ -8,19 +8,14 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./demo-cart.component.scss']
 })
 export class DemoCartComponent implements OnInit {
-
   constructor(
     private modal: NzModalRef,
-    // private cartService: CartService,
   ) { }
 
   ngOnInit() {
   }
+
   handleCancel() {
     this.modal.destroy()
   }
-  // getItem() {
-  //   this.cartService.getProduct()
-  // }
-
 }

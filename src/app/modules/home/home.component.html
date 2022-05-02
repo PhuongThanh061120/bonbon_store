@@ -1,13 +1,9 @@
 <div>
   <nz-carousel nzAutoPlay nzAutoPlaySpeed="4000">
-    <div
-      nz-carousel-content
-      *ngFor="let content of contents"
-      [ngStyle]="{
+    <div nz-carousel-content *ngFor="let content of contents" [ngStyle]="{
         'background-image': content.image,
         'text-align': content.align
-      }"
-    >
+      }">
       <div>
         <h3>{{ content.title }}</h3>
         <p>{{ content.pragragraph }}</p>
@@ -18,22 +14,39 @@
 <!-- product list -->
 <div class="container">
   <div class="mt-5">
-    <div *ngFor="let item of items">
-      <div class="text-center mb-5">
-        <h2 class="mt-100">{{ item.title }}</h2>
-        <p>{{ item.textLead }}</p>
-      </div>
-      <product-card></product-card>
-      <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 px-md-6">
-         <div *ngFor="let child of listOfData">
-           <product-card [data]="child"></product-card>
-         </div>
-       </div> -->
-      <div class="text-center my-5">
-        <a class="text-black-50" routerLink="/comic">Xem thêm sản phẩm khác</a>
-      </div>
-      <nz-divider></nz-divider>
+    <div class="text-center mb-5">
+      <h2 class="mt-100">Sản phẩm mới nhất</h2>
+      <p>Sách xuất bản mới nhất bạn không nên bỏ lỡ</p>
     </div>
+    <div class="row row-cols-3">
+      <ng-container *ngFor="let book of listOfNewData">
+        <product-card [data]="book" class="mb-4"></product-card>
+      </ng-container>
+    </div>
+    <nz-divider></nz-divider>
+  </div>
+  <div class="mt-5">
+    <div class="text-center mb-5">
+      <h2 class="mt-100">Sản phẩm được yêu thích nhất</h2>
+      <p>Sách được yêu thích nhất tháng 4</p>
+    </div>
+    <div class="row row-cols-3">
+      <ng-container *ngFor="let book of listOfFavoriteData">
+        <product-card [data]="book" class="mb-4"></product-card>
+      </ng-container>
+    </div>
+    <nz-divider></nz-divider>
+  </div>
+  <div class="mt-5">
+    <div class="text-center mb-5">
+      <h2 class="mt-100">Gợi ý dành riêng đến bạn</h2>
+    </div>
+    <div class="row row-cols-3">
+      <ng-container *ngFor="let book of listOfPersonal">
+        <product-card [data]="book" class="mb-4"></product-card>
+      </ng-container>
+    </div>
+    <nz-divider></nz-divider>
   </div>
   <!-- /product list -->
   <div class="row decor-img">
