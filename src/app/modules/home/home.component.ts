@@ -65,16 +65,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // tạm fake data để hiển thị, call api bằng func getData();
-    this.listOfNewData = this.products.filter(x => x.publishingYear === new Date().getFullYear());
-    this.listOfFavoriteData = this.products.filter(x => x.amount > 10);
-    this.listOfPersonal = this.products;
-    this.listOfPersonal.length = 5;
-    // this.getData();
+    // this.listOfNewData = this.products.filter(x => x.publishingYear === new Date().getFullYear());
+    // this.listOfFavoriteData = this.products.filter(x => x.amount > 10);
+    // this.listOfPersonal = this.products;
+    // this.listOfPersonal.length = 5;
+    this.getData();
 
   }
 
   getData() {
-    // lấy ra danh sách cho 3 loại đầu mục sách hiển thị trên trang chủ 
+    // lấy ra danh sách cho 3 loại đầu mục sách hiển thị trên trang chủ
     // sách mới lấy theo năm xuất bản là năm hiện tại
     // sách được yêu thích lấy theo số lượng tồn kho > 10
     // sách gợi ý lấy mặc định 5 sách đầu tiên trả về theo danh sách

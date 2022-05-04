@@ -20,13 +20,13 @@
     <p>Thể loại: {{ data?.category?.name }}</p>
     <p>Năm xuất bản: {{ data?.publishingYear }}</p>
     <p>Ngôn ngữ: {{ data?.language?.name }}</p>
-    <p>Mô tả: {{ data?.description }}</p>
-    <p>Giá: {{ data?.price | number }}đ</p>
+    <p>Mô tả: {{ data?.desc }}</p>
+    <p>Giá: {{ data?.price | number }} đ</p>
     <div class="mb-3">
       <span class="mr-2">Số lượng: </span>
       <nz-input-number [formControl]="amount" [nzMin]="1" style="width: 60px"></nz-input-number>
     </div>
-    <div>Tạm tính: <span class="text-danger"> {{ amount.value*data?.price | number }}đ</span></div>
+    <div>Tạm tính: <span class="text-danger"> {{ amount.value*data?.price | number }} đ</span></div>
   </div>
 </div>
 <div class="d-flex justify-content-end mt-4">
