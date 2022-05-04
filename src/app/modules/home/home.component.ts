@@ -58,8 +58,8 @@ export class HomeComponent implements OnInit {
   //     content: 'Mùa thu và nỗi nhớ'
   //   },
   // ];
-  private Url = 'https://localhost:5001/api/ProductModels';
-  // private Url = 'http://localhost:8080/products/';
+  // private Url = 'https://localhost:5001/api/ProductModels';
+  private Url = 'http://localhost:8080/products/';
   listOfData = [];
   productName = [];
   constructor(

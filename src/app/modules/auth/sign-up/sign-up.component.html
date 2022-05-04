@@ -1,11 +1,11 @@
 <div class="login-box">
   <h2>Đăng ký</h2>
-  <form nz-form>
+  <form nz-form [formGroup]="signupForm", (ngSubmit)="signup()">
     <nz-form-item>
       <nz-form-control>
         <nz-input-group>
           <!-- lastName -->
-          <input type="text" nz-input placeholder="Họ và tên đệm" />
+          <input type="text" nz-input placeholder="Họ và tên đệm " formControlName="firstName" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
