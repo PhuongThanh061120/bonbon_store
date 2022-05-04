@@ -11,15 +11,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of listOfData">
-      <td><img src="{{ data.image }}" alt="" width="80px"></td>
+      <td><img src="{{ data.img }}" alt="" width="80px"></td>
       <td>
         <div>{{ data.type }}</div>
       </td>
-      <td>16,000đ</td>
-      <td>
-        <nz-input-number [formControl]="amount" [nzMin]="1" [nzMax]="10" style="width: 60px"></nz-input-number>
-      </td>
-      <td>16,000đ</td>
+      <td>{{ data.price | number }}đ</td>
+      <td>{{ data.number }}</td>
+      <td>{{ data?.price*data.number | number }}đ</td>
       <td class="text-center"><i class=" delete-btn" nz-icon nzType="delete" nzTheme="outline" nz-popconfirm
           nzPopconfirmTitle="Are you sure delete this task?" (nzOnConfirm)="deleteProduct(data)"
           nzPopconfirmPlacement="top" nz-button></i></td>
@@ -29,18 +27,14 @@
 <div class="price">
   <div class="d-flex justify-content-between mb-2">
     <div>Tạm tính:</div>
-    <div>16,000đ</div>
-  </div>
-  <div class="d-flex justify-content-between mb-2">
-    <div>Giảm giá:</div>
-    <div>0đ</div>
+    <div>{{ totalPrice | number }}đ</div>
   </div>
   <div class="d-flex justify-content-between mb-2">
     <div>Phí vận chuyển:</div>
-    <div>10,000đ</div>
+    <div>30,000đ</div>
   </div>
   <div class="d-flex justify-content-between mb-2">
     <div>Tổng thanh toán:</div>
-    <div><span>26,000đ</span></div>
+    <div><span>{{ totalPrice + 30000 | number }}đ</span></div>
   </div>
 </div>

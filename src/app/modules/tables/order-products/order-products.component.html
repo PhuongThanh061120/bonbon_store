@@ -16,21 +16,10 @@
         <td>{{item.productId}}</td>
         <td>{{item.amount}}</td>
         <td style="text-align: center">
-          <img
-            src="../../../../assets/icons/add.svg"
-            alt=""
-            style="margin-right: 10px; cursor: pointer"
-          />
-          <img
-            src="../../../../assets/icons/edit.svg"
-            alt=""
-            style="margin-right: 10px; cursor: pointer"
-          />
-          <img
-            src="../../../../assets/icons/trash.svg"
-            alt=""
-            style="cursor: pointer"
-          />
+          <img src="../../../../assets/icons/add.svg" alt="" style="margin-right: 10px; cursor: pointer" />
+          <img (click)="onEdit()" src="../../../../assets/icons/edit.svg" alt=""
+            style="margin-right: 10px; cursor: pointer" />
+          <img src="../../../../assets/icons/trash.svg" alt="" style="cursor: pointer" />
         </td>
       </tr>
     </tbody>

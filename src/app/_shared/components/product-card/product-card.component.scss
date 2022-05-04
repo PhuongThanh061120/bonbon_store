@@ -48,10 +48,8 @@
   }
 }
 
-.img {
-  img {
-    object-fit: contain;
-  }
+.img-product {
+  object-fit: contain;
 }
 
 .main-img {
@@ -63,18 +61,14 @@
   text-align: right;
 
 }
-.div-grid{
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  row-gap: 20px;
-  .item{
-    width: 100%;
-    text-align: center;
 
-    .img-product{
-      padding: 5%;
-      width: 100%;
-      height: 420px;
-    }
+.item {
+  width: 100%;
+  text-align: center;
+
+  .img-product {
+    padding: 5%;
+    width: 100%;
+    height: 420px;
   }
 }

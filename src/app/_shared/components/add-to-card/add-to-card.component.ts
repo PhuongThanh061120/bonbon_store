@@ -11,6 +11,7 @@ import { CartService } from '../services/cart.service';
 })
 export class AddToCardComponent implements OnInit {
   amount = new FormControl(1, [Validators.required]);
+  data: any;
   item = {
     name: 'Doraemon tập 1: Chú khủng long của Nobita',
     price: '16,000đ',
@@ -28,14 +29,20 @@ export class AddToCardComponent implements OnInit {
       },
     ],
   };
-
   constructor(
     private modalRef: NzModalRef,
     private modal: NzModalService,
     private cartService: CartService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.data);
+  }
+
+  getActiveItem(item: any) {
+    return item.children[item.activeIndex];
+  }
+
   createModal(): void {
     this.modal.create({
       nzTitle: 'Thêm vào giỏ hàng',
@@ -43,23 +50,19 @@ export class AddToCardComponent implements OnInit {
       nzFooter: null,
       nzClassName: 'modal-md',
     });
+    this.modalRef.destroy();
   }
-  getActiveItem(item: any) {
-    return item.children[item.activeIndex];
-  }
-  showModal() {
+
+  addToCart(product: any) {
+    this.cartService.addToCart({ ...product, number: this.amount.value || 1 });
     this.createModal();
     this.modalRef.destroy();
   }
+
   handleOk(): void {
     this.modalRef.destroy();
   }
   handleCancel(): void {
-    this.modalRef.destroy();
-  }
-  addToCart(product: any) {
-    this.cartService.addToCart(product);
-    this.showModal();
     this.modalRef.destroy();
   }
 }

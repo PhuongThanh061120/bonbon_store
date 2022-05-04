@@ -28,6 +28,7 @@ export interface Product {
   category: string;
   publisher: string;
   active: boolean;
+  img?: string;
 }
 
 export interface Publisher {
@@ -55,7 +56,7 @@ export interface Order {
   status: string;
 }
 
-export interface Cart{
+export interface Cart {
   id: number;
   user: string;
   product: string;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/_shared/components/services/api.service';
 
 @Component({
   selector: 'app-order-products',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiService) { }
+
 
   ngOnInit() {
   }
@@ -39,7 +41,6 @@ export class OrderProductsComponent implements OnInit {
     },
   ]
 
-  // constructor(private service: ApiService) { }
 
   // items: Order[] = [];
 
