@@ -33,7 +33,7 @@ export class PublisherCreateComponent implements OnInit {
     this.publisherService.create(this.myForm.value).subscribe(() => {
       this.notification.success(
         'Thành công',
-        'Thêm mới Nhà xuất bản thành công'
+        'Thêm mới thành công'
       );
       this.gotoList();
     })

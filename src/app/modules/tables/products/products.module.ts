@@ -6,7 +6,8 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { ProductCreateComponent } from './pages/product-create/product-create.component';
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
-import { ApiService } from '../../../_shared/components/services/api.service';
+import { ProductService } from '../../../_shared/components/services/product.service';
+import { ApiService } from 'src/app/_shared/components/services/api.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ApiService } from '../../../_shared/components/services/api.service';
     SharedModule
   ],
   declarations: [ProductsComponent, ProductFormComponent, ProductCreateComponent, ProductUpdateComponent],
-  providers: [ApiService]
+  providers: [ApiService, ProductService]
 })
 export class ProductsModule { }

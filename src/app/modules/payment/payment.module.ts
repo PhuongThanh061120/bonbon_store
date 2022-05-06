@@ -4,6 +4,7 @@ import { PaymentComponent } from './payment.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { PaymentRoutes } from './payment.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderService } from 'src/app/_shared/components/services/order.service';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
   ],
-  declarations: [PaymentComponent]
+  declarations: [PaymentComponent],
+  providers: [OrderService]
 })
 export class PaymentModule { }

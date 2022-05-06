@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ApiService } from '../../../../../_shared/components/services/api.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from '../../../../../_shared/components/services/api.servi
 })
 export class ProductFormComponent implements OnInit {
 
-  myForm: FormGroup;
+  @Input() myForm: FormGroup;
   @Output() save = new EventEmitter<void>();
   @Output() cancel = new EventEmitter<void>();
 
@@ -17,18 +17,7 @@ export class ProductFormComponent implements OnInit {
   languages: any[] = [];
   publishers: any[] = [];
 
-  constructor(private fb: FormBuilder, private service: ApiService) {
-    this.myForm = this.fb.group({
-      name: ['', [Validators.required]],
-      categoryId: [null, [Validators.required]],
-      languageId: [null, [Validators.required]],
-      publisherId: [null, [Validators.required]],
-      publishingYear: [null],
-      amount: [null, [Validators.required]],
-      description: [''],
-      price: [null, [Validators.required]],
-    });
-  }
+  constructor(private service: ApiService) { }
 
   ngOnInit(): void {
       this.getAllItem();

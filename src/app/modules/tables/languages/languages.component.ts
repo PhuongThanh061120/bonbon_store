@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Language } from 'src/app/_shared/components/models/api.model';
 import { ApiService } from 'src/app/_shared/components/services/api.service';
+import { LanguageService } from 'src/app/_shared/components/services/language.service';
 
 @Component({
   selector: 'app-languages',
@@ -10,7 +12,8 @@ import { ApiService } from 'src/app/_shared/components/services/api.service';
 })
 export class LanguagesComponent implements OnInit {
 
-  constructor( protected router: Router, private service: ApiService) { }
+  constructor( protected router: Router, private languageService: LanguageService,
+    private notification: NzNotificationService) { }
 
   items: Language[] = [];
 
@@ -19,7 +22,7 @@ export class LanguagesComponent implements OnInit {
   }
 
   getAll() {
-    this.service.getAllLanguage().subscribe((res: any) => {
+    this.languageService.getAll().subscribe((res: any) => {
       this.items = res;
     })
   }
@@ -28,9 +31,16 @@ export class LanguagesComponent implements OnInit {
     this.router.navigate([`/languages/create`]);
   }
 
-  clickUpdate(item: any) {
-    console.log(item.id);
+  clickUpdate(id: any) {
+    this.router.navigate([`/languages/${id}`]);
+  }
 
-    this.router.navigate([`/languages/${item.id}`]);
+  delete(id) {
+    this.languageService.delete(id).subscribe(() => {
+      this.notification.success(
+        'Thành công',
+        'Xóa thành công'
+      );
+    })
   }
 }

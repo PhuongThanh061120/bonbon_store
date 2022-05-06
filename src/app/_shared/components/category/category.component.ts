@@ -61,4 +61,24 @@ export class CategoryComponent implements OnInit {
     })
   }
 
+  searchName() {
+    console.log('name');
+  }
+
+  searchPrice() {
+    console.log('price');
+  }
+
+  searchCategory() {
+    console.log('category');
+  }
+
+  searchLanguage() {
+    console.log('language');
+  }
+
+  searchPublisher() {
+    console.log('publisher');
+  }
+
 }

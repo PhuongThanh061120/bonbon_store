@@ -6,7 +6,7 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { PublisherCreateComponent } from './pages/publisher-create/publisher-create.component';
 import { PublisherFormComponent } from './pages/publisher-form/publisher-form.component';
 import { PublisherUpdateComponent } from './pages/publisher-update/publisher-update.component';
-import { ApiService } from '../../../_shared/components/services/api.service';
+import { PublisherService } from 'src/app/_shared/components/services/publisher.service';
 
 @NgModule({
   imports: [CommonModule, PublishersRoutes, SharedModule],
@@ -16,6 +16,6 @@ import { ApiService } from '../../../_shared/components/services/api.service';
     PublisherFormComponent,
     PublisherUpdateComponent,
   ],
-  providers: [ApiService]
+  providers: [PublisherService]
 })
 export class PublishersModule {}

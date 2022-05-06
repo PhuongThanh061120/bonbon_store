@@ -34,17 +34,25 @@ export class PublishersComponent implements OnInit {
     this.router.navigate([`/publishers/create`]);
   }
 
-  update(item: any) {
-    this.router.navigate([`/publishers/${item.id}`]);
+  update(id: any) {
+    this.router.navigate([`/publishers/${id}`]);
   }
 
   delete(id) {
-    this.publisherService.delete(id).subscribe(() => {
+    this.publisherService.delete(id).subscribe(
+      (res) => {
+      console.log(res);
       this.notification.success(
         'Thành công',
-        'Xóa Nhà xuất bản thành công'
+        'Xóa thành công'
       );
-    })
+      this.getAll();
+    },
+    (err) => {
+      console.log(err, 'abc');
+
+    }
+    );
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Product } from 'src/app/_shared/components/models/api.model';
 import { ApiService } from '../../../_shared/components/services/api.service';
+import { ProductService } from '../../../_shared/components/services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -10,17 +12,16 @@ import { ApiService } from '../../../_shared/components/services/api.service';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(protected router: Router, private service: ApiService) { }
+  constructor(protected router: Router, private productService: ProductService, private notification: NzNotificationService) { }
 
   items: Product[] = [];
   ngOnInit() {
     this.getAll();
-    console.log(this.items);
 
   }
 
   getAll(){
-    this.service.getAllProduct().subscribe((res:any)=>{
+    this.productService.getAll().subscribe((res:any)=>{
       this.items = res
     })
   }
@@ -29,10 +30,19 @@ export class ProductsComponent implements OnInit {
     this.router.navigate([`/products-table/create`]);
   }
 
-  clickUpdate(item: any) {
-    console.log(item.id);
+  clickUpdate(id: any) {
+    this.router.navigate([`/products-table/${id}`]);
+  }
 
-    this.router.navigate([`/products-table/${item.id}`]);
+  delete(id) {
+    this.productService.delete(id).subscribe((res: any) => {
+
+      this.notification.success(
+        'Thành công',
+        'Xóa thành công'
+      );
+      this.getAll();
+    })
   }
 
 }

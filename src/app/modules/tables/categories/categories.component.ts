@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/_shared/components/models/api.model';
-import { ApiService } from 'src/app/_shared/components/services/api.service';
+import { CategoryService } from '../../../_shared/components/services/category.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-categories',
@@ -10,7 +11,7 @@ import { ApiService } from 'src/app/_shared/components/services/api.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor( protected router: Router, private service: ApiService) { }
+  constructor( protected router: Router, private categoryService: CategoryService, private notification: NzNotificationService) { }
 
   items: Category[] = [];
 
@@ -19,7 +20,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   getAll() {
-    this.service.getAllCategory().subscribe((res:any) =>{
+    this.categoryService.getAll().subscribe((res:any) =>{
       this.items = res
     })
   }
@@ -28,10 +29,17 @@ export class CategoriesComponent implements OnInit {
     this.router.navigate([`/categories/create`]);
   }
 
-  clickUpdate(item: any) {
-    console.log(item.id);
+  clickUpdate(id: any) {
+    this.router.navigate([`/categories/${id}`]);
+  }
 
-    this.router.navigate([`/categories/${item.id}`]);
+  clickDelete(id) {
+    this.categoryService.delete(id).subscribe(() => {
+      this.notification.success(
+        'Thành công',
+        'Xóa thành công'
+      );
+    })
   }
 
 }

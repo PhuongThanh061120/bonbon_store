@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PublisherService {
-  url = "http://localhost:8080/publishers";
+export class ProductService {
+
+  url = "http://localhost:8080/products";
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +20,7 @@ export class PublisherService {
   }
 
   delete(id: any): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`, {responseType:'text'})
+    return this.http.delete(`${this.url}/${id}`)
   }
 
   getAll(): Observable<any> {
@@ -29,4 +30,5 @@ export class PublisherService {
   findOne(id): Observable<any> {
     return this.http.get<any>(`${this.url}/${id}`)
   }
+
 }

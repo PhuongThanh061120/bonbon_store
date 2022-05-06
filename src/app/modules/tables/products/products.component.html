@@ -1,4 +1,8 @@
-<div class="container">
+<div class="container"><div class="div-btn">
+  <button (click)="clickCreate()" class="rounded" nz-button nzType="primary" style="margin-right: 10px">
+    Thêm mới
+  </button>
+</div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -20,7 +24,7 @@
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.amount}}</td>
-        <td>{{item.description}}</td>
+        <td>{{item.desc}}</td>
         <td>{{item.price}}</td>
         <td>{{item.active}}</td>
         <td>{{item.category.name}}</td>
@@ -29,21 +33,15 @@
         <td>{{item.publishingYear}}</td>
         <td style="text-align: center">
           <img
-          title="Create"
-          (click)="clickCreate()"
-            src="../../../../assets/icons/add.svg"
-            alt=""
-            style="margin-right: 10px; cursor: pointer"
-          />
-          <img
           title="Edit"
-          (click)="clickUpdate($event)"
+          (click)="clickUpdate(item.id)"
             src="../../../../assets/icons/edit.svg"
             alt=""
             style="margin-right: 10px; cursor: pointer"
           />
           <img
           title="Delete"
+          (click)="delete(item.id)"
             src="../../../../assets/icons/trash.svg"
             alt=""
             style="cursor: pointer"

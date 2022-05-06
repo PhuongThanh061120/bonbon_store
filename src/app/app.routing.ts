@@ -7,10 +7,26 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 const routes: Routes = [
   {
     path: '',
+    component: AuthLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./modules/auth/login/login.module').then(m => m.LoginModule)
+      },
+      {
+        path: 'sign-up',
+        loadChildren: () =>
+          import('./modules/auth/sign-up/sign-up.module').then(m => m.SignUpModule)
+      },
+    ]
+  },
+  {
+    path: '',
     component: ContentLayoutComponent,
     // canActivate: [AuthorizeGuard],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'home',
         loadChildren: () =>
@@ -40,22 +56,6 @@ const routes: Routes = [
         path: 'product-view',
         loadChildren: () =>
           import('./modules/product-view/product-view.module').then(m => m.ProductViewModule)
-      },
-    ]
-  },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        loadChildren: () =>
-          import('./modules/auth/login/login.module').then(m => m.LoginModule)
-      },
-      {
-        path: 'sign-up',
-        loadChildren: () =>
-          import('./modules/auth/sign-up/sign-up.module').then(m => m.SignUpModule)
       },
     ]
   },

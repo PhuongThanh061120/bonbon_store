@@ -22,3 +22,14 @@
   background-color: #ffd8d8;
   border-radius: 4px;
 }
+
+.searchGroup{
+  display: flex;
+  // justify-content: space-between;
+}
+.iconSearch{
+  margin-left: 5px;
+  margin-top: 4px;
+  font-size: 24px;
+  cursor: pointer;
+}

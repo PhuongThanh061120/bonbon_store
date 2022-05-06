@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/_shared/components/services/products.service';
+import { ProductsService } from '../../_shared/components/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +10,16 @@ import { ProductsService } from 'src/app/_shared/components/services/products.se
 export class HomeComponent implements OnInit {
   contents = [
     {
-      image: 'url(/assets/images/img1.jpg)',
+      image: 'url(/assets/images/img1.jpg)'
     },
     {
-      image: 'url(/assets/images/demo.jpg)',
+      image: 'url(/assets/images/demo.jpg)'
     },
     {
-      image: 'url(/assets/images/img5.jpg)',
+      image: 'url(/assets/images/img5.jpg)'
     },
   ];
+
   products: any[] = [
     {
       img: '/assets/images/Doraemon/Do1.jpg',
@@ -55,7 +56,9 @@ export class HomeComponent implements OnInit {
       publishingYear: 2020,
       amount: 11
     },
-  ];
+  ]
+  // private Url = 'https://localhost:5001/api/ProductModels';
+  private Url = 'http://localhost:8080/products/';
   listOfNewData = [];
   listOfFavoriteData = [];
   listOfPersonal = [];
@@ -72,7 +75,6 @@ export class HomeComponent implements OnInit {
     this.getData();
 
   }
-
   getData() {
     // lấy ra danh sách cho 3 loại đầu mục sách hiển thị trên trang chủ
     // sách mới lấy theo năm xuất bản là năm hiện tại
@@ -83,7 +85,9 @@ export class HomeComponent implements OnInit {
       this.listOfFavoriteData = res.filter(x => x.amount > 10);
       this.listOfPersonal = res;
       this.listOfPersonal.length = 5;
-    });
+  })
   }
+
+
 
 }

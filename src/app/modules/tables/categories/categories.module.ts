@@ -6,7 +6,7 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { CategoryCreateComponent } from './pages/category-create/category-create.component';
 import { CategoryFormComponent } from './pages/category-form/category-form.component';
 import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
-import { ApiService } from 'src/app/_shared/components/services/api.service';
+import { CategoryService } from '../../../_shared/components/services/category.service';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { ApiService } from 'src/app/_shared/components/services/api.service';
     SharedModule
   ],
   declarations: [CategoriesComponent, CategoryCreateComponent, CategoryFormComponent, CategoryUpdateComponent],
-  providers: [ApiService]
+  providers: [CategoryService]
 })
 export class CategoriesModule { }

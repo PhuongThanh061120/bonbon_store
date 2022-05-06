@@ -43,7 +43,8 @@ export class PaymentComponent {
   order(): void {
     const products = this.cartService.getProduct();
     const body = { ...this.myForm.value, products };
-    // clear sản phẩm trong localstorage sau khi order thành công 
+    console.log(body);
+    // clear sản phẩm trong localstorage sau khi order thành công
     this.orderService.order(body).subscribe(res => {
       this.cartService.clearProduct();
       this.createModal();

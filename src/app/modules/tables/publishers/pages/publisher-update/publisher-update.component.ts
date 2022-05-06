@@ -36,7 +36,7 @@ export class PublisherUpdateComponent implements OnInit {
     this.publisherService.update(this.id, this.myForm.value).subscribe(() => {
       this.notification.success(
         'Thành công',
-        'Cập nhật Nhà xuất bản thành công'
+        'Cập nhật thành công'
       );
       this.gotoList();
     })
