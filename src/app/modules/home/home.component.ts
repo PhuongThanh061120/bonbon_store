@@ -66,7 +66,13 @@ export class HomeComponent implements OnInit {
     private productsService: ProductsService
   ) { }
 
+  localS = localStorage.getItem('user')
+
   ngOnInit() {
+    console.log('/////////'+this.localS);
+
+
+
     // tạm fake data để hiển thị, call api bằng func getData();
     // this.listOfNewData = this.products.filter(x => x.publishingYear === new Date().getFullYear());
     // this.listOfFavoriteData = this.products.filter(x => x.amount > 10);

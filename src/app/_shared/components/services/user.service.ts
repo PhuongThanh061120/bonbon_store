@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class UserService {
 
-  url = "http://localhost:8080/products";
+  url = "http://localhost:8080/users";
 
   constructor(private http: HttpClient) { }
 
@@ -19,14 +19,6 @@ export class ProductService {
     return this.http.put(`${this.url}/${id}`, body)
   }
 
-  change(id, body): Observable<any> {
-    return this.http.put(`${this.url}/status/${id}`, body);
-  }
-
-  delete(id: any): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`, {responseType:'text'})
-  }
-
   getAll(): Observable<any> {
     return this.http.get<any>(this.url)
   }
@@ -35,12 +27,8 @@ export class ProductService {
     return this.http.get<any>(`${this.url}/${id}`)
   }
 
-  upload(id: any, body): Observable<any> {
-    return this.http.post(`${this.url}/image/upload/${id}`, body)
+  change(id, body): Observable<any> {
+    return this.http.put(`${this.url}/status/${id}`, body,  {responseType:'text'});
   }
-
-  // searchByCategoryId(id: any): Observable<any> {
-  //   return this.http.get<any>(`${this.url}/categoryId/${id}`)
-  // }
 
 }

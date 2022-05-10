@@ -8,6 +8,7 @@
       <tr>
         <th>Mã sản phẩm</th>
         <th>Tên sản phẩm</th>
+        <th>Ảnh sản phẩm</th>
         <th>Số lượng</th>
         <th>Mô tả</th>
         <th>Đơn giá</th>
@@ -23,6 +24,7 @@
       <tr *ngFor="let item of items">
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
+        <td><img style="width: 60px" src="{{item.imageName[0]}}"></td>
         <td>{{item.amount}}</td>
         <td>{{item.desc}}</td>
         <td>{{item.price}}</td>
@@ -32,14 +34,28 @@
         <td>{{item.publisher.name}}</td>
         <td>{{item.publishingYear}}</td>
         <td style="text-align: center">
-          <img
+          <img class="active"
+          title="Change Status"
+          (click)="clickChange(item.id)"
+            src="../../../../assets/icons/change.svg"
+            alt=""
+            style="margin-right: 10px; cursor: pointer"
+          />
+          <img class="active"
+          title="Upload"
+          (click)="clickUpload(item.id)"
+            src="../../../../assets/icons/upload.svg"
+            alt=""
+            style="margin-right: 10px; cursor: pointer"
+          />
+          <img class="active"
           title="Edit"
           (click)="clickUpdate(item.id)"
             src="../../../../assets/icons/edit.svg"
             alt=""
             style="margin-right: 10px; cursor: pointer"
           />
-          <img
+          <img class="active"
           title="Delete"
           (click)="delete(item.id)"
             src="../../../../assets/icons/trash.svg"

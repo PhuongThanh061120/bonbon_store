@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AddToCardComponent } from '../add-to-card/add-to-card.component';
 @Component({
@@ -13,7 +14,8 @@ export class ProductCardComponent {
   isDisplay = false;
   index: number;
   constructor(
-    private modal: NzModalService
+    private modal: NzModalService,
+    private router: Router
   ) { }
 
   getActiveData(item: any) {
@@ -28,5 +30,9 @@ export class ProductCardComponent {
       nzClassName: 'modal-md',
       nzComponentParams: { data }
     });
+  }
+
+  onView(id) {
+    this.router.navigate([`/product-view/${id}`])
   }
 }

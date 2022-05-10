@@ -9,7 +9,7 @@
         class="nav-list"
         [ngClass]="{ 'nav-hide': isHide, 'nav-active': !isHide }"
       >
-        <li><a routerLink="/">Trang chủ</a></li>
+        <li><a routerLink="/home">Trang chủ</a></li>
         <li>
           <!-- <div nz-dropdown [nzDropdownMenu]="menu">Sản phẩm</div> -->
           <a routerLink="/products">Sản phẩm</a>
@@ -32,7 +32,7 @@
             </div>
           </ul>
         </nz-dropdown-menu> -->
-        <ng-container *ngIf="user; else elseTemplate">
+        <!-- <ng-container *ngIf="user; else elseTemplate">
           <li
             class="nav-item"
             nz-button
@@ -59,10 +59,23 @@
         </ng-container>
         <ng-template #elseTemplate>
           <li class="nav-link"><a routerLink="/login">Đăng xuất</a></li>
-        </ng-template>
+        </ng-template> -->
         <li>
-          tên
+          <a href="">{{ localS }}</a>
         </li>
+        <li>
+          <!-- <div nz-dropdown [nzDropdownMenu]="menu">Bình</div> -->
+          <div nz-dropdown [nzDropdownMenu]="menu">
+            <i nz-icon nzType="icons:dropdown" nzTheme="outline"></i>
+          </div>
+        </li>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu class="p-3">
+            <a routerLink="/login">
+              <li nz-menu-item>Đăng xuất</li>
+            </a>
+          </ul>
+        </nz-dropdown-menu>
         <li class="cart">
           <a routerLink="/cart"
             ><i nz-icon nzType="shopping-cart" nzTheme="outline"></i
@@ -117,10 +130,7 @@
         <div class="col-12 col-md-4 channel">
           <h4>Liên hệ với chúng tôi</h4>
           <div class="d-flex">
-            <a
-              href="https://www.facebook.com/thanhttp0611"
-              target="_blank"
-            >
+            <a href="https://www.facebook.com/thanhttp0611" target="_blank">
               <img src="/assets/images/fb.png" alt="Facebook"
             /></a>
             <a href=""> <img src="/assets/images/insta.jpg" alt="" /></a>

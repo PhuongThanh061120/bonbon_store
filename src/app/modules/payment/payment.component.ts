@@ -24,9 +24,6 @@ export class PaymentComponent {
       phoneNumber: [null, [Validators.required]],
       address: ['', [Validators.required]],
       email: [''],
-      city: [''],
-      commune: [''],
-      district: [''],
     });
   }
 
@@ -41,13 +38,17 @@ export class PaymentComponent {
   }
 
   order(): void {
-    const products = this.cartService.getProduct();
-    const body = { ...this.myForm.value, products };
-    console.log(body);
-    // clear sản phẩm trong localstorage sau khi order thành công
-    this.orderService.order(body).subscribe(res => {
-      this.cartService.clearProduct();
-      this.createModal();
-    })
+    // const products = this.cartService.getProduct();
+    // const cartIds = 1;
+    // // const body = { ...this.myForm.value, products };
+    // const body = { ...this.myForm.value, cartIds };
+    // console.log(body);
+    // // clear sản phẩm trong localstorage sau khi order thành công
+    // this.orderService.order(body).subscribe(res => {
+    //   this.cartService.clearProduct();
+    //   this.createModal();
+    // })
+    this.createModal();
+    localStorage.clear();
   }
 }

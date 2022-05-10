@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { ProductViewRoutes } from './product-view.routing';
 import { IvyGalleryModule } from 'angular-gallery';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductService } from '../../_shared/components/services/product.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     IvyGalleryModule,
     HttpClientModule
   ],
-  declarations: [ProductViewComponent]
+  declarations: [],
+  providers: [ProductService]
 })
 export class ProductViewModule { }

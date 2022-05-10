@@ -41,6 +41,7 @@ export class LanguagesComponent implements OnInit {
         'Thành công',
         'Xóa thành công'
       );
+      this.getAll();
     })
   }
 }

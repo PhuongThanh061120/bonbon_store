@@ -26,23 +26,17 @@
         <td style="text-align: center">
           <img
           title="Change Status"
-          (click)="clickChange($event)"
+          (click)="clickChange(item.id)"
             src="../../../../assets/icons/change.svg"
             alt=""
             style="margin-right: 10px; cursor: pointer"
           />
           <img
           title="Edit"
-          (click)="clickUpdate($event)"
+          (click)="clickUpdate(item.id)"
             src="../../../../assets/icons/edit.svg"
             alt=""
             style="margin-right: 10px; cursor: pointer"
-          />
-          <img
-          title="Delete"
-            src="../../../../assets/icons/trash.svg"
-            alt=""
-            style="cursor: pointer"
           />
         </td>
       </tr>

@@ -9,7 +9,7 @@
         class="nav-list"
         [ngClass]="{ 'nav-hide': isHide, 'nav-active': !isHide }"
       >
-        <ng-container *ngIf="user; else elseTemplate">
+        <!-- <ng-container *ngIf="user; else elseTemplate">
           <li
             class="nav-item"
             nz-button
@@ -36,7 +36,17 @@
         </ng-container>
         <ng-template #elseTemplate>
           <li class="nav-link"><a routerLink="/login">Đăng xuất</a></li>
-        </ng-template>
+        </ng-template> -->
+        <li>
+          <div nz-dropdown [nzDropdownMenu]="menu">Trần Thị Phương Thanh</div>
+        </li>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu class="p-3">
+            <a routerLink="/login">
+              <li nz-menu-item>Đăng xuất</li>
+            </a>
+          </ul>
+        </nz-dropdown-menu>
 
       </ul>
       <!-- <div class="burger" (click)="isHide = !isHide">
@@ -50,15 +60,15 @@
   <div class="main">
     <div class="sidebar">
       <ul>
-        <li><a routerLink="/addresses">Bảng địa chỉ</a></li>
-        <li><a routerLink="/carts">Bảng giỏ hàng</a></li>
-        <li><a routerLink="/categories">Bảng danh mục</a></li>
-        <li><a routerLink="/languages">Bảng ngôn ngữ</a></li>
-        <li><a routerLink="/order-products">Bảng chi tiết đơn hàng</a></li>
-        <li><a routerLink="/orders">Bảng đơn hàng</a></li>
-        <li><a routerLink="/products-table">Bảng sản phẩm</a></li>
-        <li><a routerLink="/publishers">Bảng nhà xuất bản</a></li>
-        <li><a routerLink="/users">Bảng người dùng</a></li>
+        <!-- <li><a routerLink="/addresses">Quản lý địa chỉ</a></li> -->
+        <!-- <li><a routerLink="/carts">Quản lý giỏ hàng</a></li> -->
+        <li><a routerLink="/categories">Quản lý danh mục</a></li>
+        <li><a routerLink="/languages">Quản lý ngôn ngữ</a></li>
+        <!-- <li><a routerLink="/order-products">Quản lý chi tiết đơn hàng</a></li> -->
+        <li><a routerLink="/orders">Quản lý đơn hàng</a></li>
+        <li><a routerLink="/products-table">Quản lý sản phẩm</a></li>
+        <li><a routerLink="/publishers">Quản lý nhà xuất bản</a></li>
+        <li><a routerLink="/users">Quản lý người dùng</a></li>
       </ul>
     </div>
     <div class="content">

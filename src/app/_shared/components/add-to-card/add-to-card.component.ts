@@ -45,7 +45,7 @@ export class AddToCardComponent implements OnInit {
 
   createModal(): void {
     this.modal.create({
-      nzTitle: 'Thêm vào giỏ hàng',
+      nzTitle: 'Xem trước giỏ hàng',
       nzContent: DemoCartComponent,
       nzFooter: null,
       nzClassName: 'modal-md',

@@ -34,11 +34,16 @@ export class CategoriesComponent implements OnInit {
   }
 
   clickDelete(id) {
-    this.categoryService.delete(id).subscribe(() => {
+    this.categoryService.delete(id).subscribe((res) => {
       this.notification.success(
         'Thành công',
         'Xóa thành công'
       );
+      this.getAll();
+    },
+    (err) => {
+      console.log(err, 'abc');
+
     })
   }
 

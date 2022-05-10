@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  userLogin: any;
   public hide = true;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]),
@@ -33,9 +34,10 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.AuthAPI.sign_in(this.email, this.password).subscribe(res=>{
+      localStorage.setItem('user', JSON.stringify(res['fullName']))
       if (res['admin'] == true) {
         alert("Dang nhap thanh cong!");
-        this._route.navigate(['/addresses'])
+        this._route.navigate(['/categories'])
       }
       else if (res['admin'] == false && res['active'] == true) {
         alert("Dang nhap thanh cong!");
@@ -47,7 +49,8 @@ export class LoginComponent implements OnInit {
 
     })
   }
-  ngOnInit() {}
+  ngOnInit() {
+  }
   mappingModel(response: ResponseLogin) {
     return {}
   }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'category',
@@ -9,7 +10,7 @@ import { ApiService } from '../services/api.service';
 })
 export class CategoryComponent implements OnInit {
   radioValue = 'A';
-
+@Output() search = new EventEmitter()
   myForm: FormGroup;
 
   options = [
@@ -26,6 +27,13 @@ export class CategoryComponent implements OnInit {
       title: 'Tiểu thuyết'
     }
   ]
+
+  test1 = new FormControl(null);
+  test2 = new FormControl(null);
+  test3 = new FormControl(null);
+  test4 = new FormControl(null);
+  test5 = new FormControl(null);
+searchValue: any;
 
   constructor(private fb: FormBuilder, private service: ApiService) {
     this.myForm = this.fb.group({
@@ -46,7 +54,30 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.getAllItem();
     console.log(this.categories);
+this.searchChange()
+  }
 
+  searchChange() {
+    this.test1.valueChanges.subscribe(val =>{
+      this.searchValue = val;
+      this.search.emit(this.searchValue)
+    });
+    this.test2.valueChanges.subscribe(val => {
+      this.searchValue = val;
+      this.search.emit(this.searchValue)
+    });
+    this.test3.valueChanges.subscribe(val => {
+      this.searchValue = val;
+      this.search.emit(this.searchValue)
+    });
+    this.test4.valueChanges.subscribe(val => {
+      this.searchValue = val;
+      this.search.emit(this.searchValue)
+    });
+    this.test5.valueChanges.subscribe(val => {
+      this.searchValue = val;
+      this.search.emit(this.searchValue)
+    });
   }
 
   getAllItem() {
@@ -70,6 +101,7 @@ export class CategoryComponent implements OnInit {
   }
 
   searchCategory() {
+    // this.productService.searchByCategoryId().subscribe
     console.log('category');
   }
 

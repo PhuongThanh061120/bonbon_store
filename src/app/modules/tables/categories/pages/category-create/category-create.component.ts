@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -13,6 +13,9 @@ export class CategoryCreateComponent implements OnInit {
 
   myForm!: FormGroup;
   id: any;
+
+  // @Output() save = new EventEmitter<void>();
+  // @Output() cancel = new EventEmitter<void>();
   constructor(protected router: Router, protected route: ActivatedRoute,
     private fb: FormBuilder,
     private categoryService: CategoryService,
@@ -23,7 +26,7 @@ export class CategoryCreateComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.myForm = this.fb.group({
       name: ['', [Validators.required]],
-      description: [''],
+      desc: [''],
     });
   }
 

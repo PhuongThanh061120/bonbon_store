@@ -20,7 +20,7 @@ export class LanguageService {
   }
 
   delete(id: any): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`)
+    return this.http.delete(`${this.url}/${id}`, {responseType:'text'})
   }
 
   getAll(): Observable<any> {

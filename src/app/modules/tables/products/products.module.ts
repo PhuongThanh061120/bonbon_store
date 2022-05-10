@@ -8,6 +8,8 @@ import { ProductCreateComponent } from './pages/product-create/product-create.co
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 import { ProductService } from '../../../_shared/components/services/product.service';
 import { ApiService } from 'src/app/_shared/components/services/api.service';
+import { UploadImageComponent } from './pages/upload-image/upload-image.component';
+import { ProductDeleteComponent } from './pages/product-delete/product-delete.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,7 @@ import { ApiService } from 'src/app/_shared/components/services/api.service';
     ProductsRoutes,
     SharedModule
   ],
-  declarations: [ProductsComponent, ProductFormComponent, ProductCreateComponent, ProductUpdateComponent],
+  declarations: [ProductsComponent, ProductFormComponent, ProductCreateComponent, ProductUpdateComponent, UploadImageComponent, ProductDeleteComponent],
   providers: [ApiService, ProductService]
 })
 export class ProductsModule { }

@@ -1,8 +1,8 @@
-<!-- product cart -->
+<!-- product card -->
 <div class="card">
   <div class="item text-center">
-    <a routerLink="/product-view">
-      <img class="img-product" src="/assets/images/OnePiece/One1.jpg" alt="" />
+    <a (click)="onView(data.id)">
+      <img class="img-product" src="{{data.imageName[0]}}" alt="" />
       <p title="{{data.name}}" style="font-size: larger;font-weight: bold; white-space: nowrap;
             width: 100%; padding: 0 5%; overflow: hidden;
             text-overflow: ellipsis; ">{{ data.name }}</p>
@@ -11,4 +11,4 @@
     <button style="cursor: pointer;" (click)="createModal(data)">Thêm vào giỏ hàng</button>
   </div>
 </div>
-<!-- /product cart -->
+<!-- /product card -->

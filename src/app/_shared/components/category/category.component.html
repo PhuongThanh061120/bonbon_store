@@ -1,12 +1,11 @@
 <div>
   <div class="mb-5">
     <h3>Tìm kiếm theo</h3>
-    <form [formGroup]="myForm">
       <nz-form-item>
         <nz-form-label>Tên sản phẩm / Năm xuất bản</nz-form-label>
         <nz-form-control>
           <nz-input-group class="searchGroup">
-            <input formControlName="keyword" nz-input placeholder="Nhập" />
+            <input [formControl]="test1" nz-input placeholder="Nhập" />
             <i class="iconSearch" (click)="searchName()" nz-icon nzType="search"></i>
           </nz-input-group>
         </nz-form-control>
@@ -18,8 +17,7 @@
             <nz-select
               nzAllowClear
               nzPlaceHolder="Chọn"
-              formControlName="categoryId"
-            >
+              [formControl]="test2"            >
               <nz-option
                 *ngFor="let item of categories"
                 [nzLabel]="item.name"
@@ -37,7 +35,6 @@
             <nz-select
               nzAllowClear
               nzPlaceHolder="Chọn"
-              formControlName="languageId"
             >
               <nz-option
                 *ngFor="let item of languages"
@@ -56,7 +53,6 @@
             <nz-select
               nzAllowClear
               nzPlaceHolder="Chọn"
-              formControlName="publisherId"
             >
               <nz-option
                 *ngFor="let item of publishers"
@@ -72,12 +68,11 @@
         <nz-form-label>Khoảng giá</nz-form-label>
         <nz-form-control>
           <nz-input-group class="searchGroup">
-            <input formControlName="less" nz-input placeholder="Từ..." />
-            <input formControlName="greater" nz-input placeholder="Đến..." />
+            <input  nz-input placeholder="Từ..." />
+            <input  nz-input placeholder="Đến..." />
             <i class="iconSearch" (click)="searchPrice()" nz-icon nzType="search"></i>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-    </form>
   </div>
 </div>

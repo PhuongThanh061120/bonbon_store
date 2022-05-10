@@ -3,6 +3,8 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { ViewProductComponent } from './modules/view-product/view-product.component';
+import { ViewProductModule } from './modules/view-product/view-product.module';
 
 const routes: Routes = [
   {
@@ -53,10 +55,15 @@ const routes: Routes = [
           import('./modules/products-site/products-site.module').then(m => m.ProductsSiteModule)
       },
       {
-        path: 'product-view',
+        path: 'view-product/:id',
+        loadChildren: () =>
+          import('./modules/view-product/view-product.module').then(m => m.ViewProductModule)
+      },
+      {
+        path: 'product-view/:id',
         loadChildren: () =>
           import('./modules/product-view/product-view.module').then(m => m.ProductViewModule)
-      },
+      }
     ]
   },
   {
